@@ -11,6 +11,9 @@ public class Plateau {
 		this.bateaux = new ArrayList<>();
 	}
 
+    public void getTableau(Case[][] tableau) {
+        this.tableau = tableau;
+    }
 	public void initialisationPlateau() {
 		this.tableau = new Case[this.taille][this.taille];
 		for (int i = 0; i < tableau.length; i++) {
@@ -44,7 +47,7 @@ public class Plateau {
         // Ajoutez le bateau à la liste des bateaux
         bateaux.add(bateau);
     }
-	private boolean verifierCollision(Case[][] casesBateau, int startX, int startY) {
+	public boolean verifierCollision(Case[][] casesBateau, int startX, int startY) {
         for (int i = 0; i < casesBateau.length; i++) {
             for (int j = 0; j < casesBateau[i].length; j++) {
                 int x = startX + i;
@@ -56,7 +59,7 @@ public class Plateau {
         }
         return false;
     }
-	private boolean verifierDepassement(Case[][] casesBateau, int startX, int startY) {
+	public boolean verifierDepassement(Case[][] casesBateau, int startX, int startY) {
         for (int i = 0; i < casesBateau.length; i++) {
             for (int j = 0; j < casesBateau[i].length; j++) {
                 int x = startX + i;
@@ -87,6 +90,32 @@ public class Plateau {
             System.out.println();
         }
     }
+    public void afficherPlateauxTirs(Joueur joueur, Joueur adversaire) {
+        System.out.println("Plateau de " + joueur.getNom() + ":");
+        joueur.getPlateau().afficherPlateau();
+    
+        System.out.println("Plateau de " + adversaire.getNom() + ":");
+        adversaire.getPlateau().afficherPlateau();
+    }
+    public Bateau getBateau(int id) {
+
+        // Implementation to return the Bateau object with the given id
+
+        // This is a placeholder implementation
+
+        for (Bateau bateau : bateaux) {
+
+            if (bateau.getId() == id) {
+
+                return bateau;
+
+            }
+
+        }
+
+        return null;
+
+    }
 
 //     public static void main(String[] args) {
 //         Plateau plateau = new Plateau();
@@ -101,6 +130,22 @@ public class Plateau {
 
 //         plateau.afficherPlateau();
 //     }
+// public static void main(String[] args) {
+//     Joueur joueur1 = new JoueurHumain("Joueur 1");
+//     Joueur joueur2 = new JoueurOrdi("Joueur 2");
+
+//     // Ajoutez des bateaux pour tester
+//     Case[][] cases1 = { { new Case(0, 0) }, { new Case(1, 0) }, { new Case(2, 0) } };
+//     Bateau bateau1 = new Bateau(1, "Bateau1", cases1);
+//     joueur1.getPlateau().ajoutezBateau(bateau1, 0, 0);
+
+//     Case[][] cases2 = { { new Case(0, 0) }, { new Case(1, 0) }, { new Case(2, 0) }, { new Case(3, 0) } };
+//     Bateau bateau2 = new Bateau(2, "Bateau2", cases2);
+//     joueur2.getPlateau().ajoutezBateau(bateau2, 4, 0);
+
+//     Plateau plateau = new Plateau();
+//     plateau.afficherPlateauxTirs(joueur1, joueur2);
+// }
  }
 
 	

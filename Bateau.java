@@ -11,13 +11,16 @@ public class Bateau {
 	}
 
 	public boolean estCoulee( int ligne ,int colonne ) {
-		
-		if (this.tableau[ligne][colonne].getTouched()) {
-			return true;
-		} else {
-			return false;
+		for (int i = 0; i < this.tableau.length; i++) {
+			for (int j = 0; j < this.tableau[i].length; j++) {
+				if (!this.tableau[i][j].getTouched()) {
+					return false;
+				}
+			}
 		}
-	}
+		return true;
+}
+	
 
 	
 	public Case getCase(int ligne , int colonne) {

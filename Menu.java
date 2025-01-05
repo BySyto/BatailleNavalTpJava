@@ -3,13 +3,19 @@ public class Menu {
 
 	private BufferedReader reader;
 
+	public Menu() {
+		this.reader = new BufferedReader(new InputStreamReader(System.in));
+	}
+
 	public void lancerPartie() {
 		Partie partie = new Partie();
-		partie.initialiserPartie();
-		partie.jouerPartie();
-		if(partie.getVainqueur() != null) {
-			System.out.println("Le vainqueur est : " + partie.getVainqueur());
+		try {
+			partie.initialiserPartie();
+			partie.jouerPartie();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
+		
 	}
 
 	public void quitter() {

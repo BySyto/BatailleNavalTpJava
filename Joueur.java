@@ -9,22 +9,25 @@ public abstract class Joueur {
 	private Case derniereCaseFrappee;
 	private BufferedReader reader;
 
+	public Joueur() {
+		this.plateau = new Plateau();
+        this.frappesTotales = 0;
+        this.frappesReussies = 0;
+        this.bateauxCoules = 0;
+        this.reader = new BufferedReader(new InputStreamReader(System.in));
+	}
 	public String getNom() {
 		return this.nom;
 	}
 
-	/**
-	 * 
-	 * @param nom
-	 */
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
 
-	/**
-	 * 
-	 * @param plateau
-	 */
+	public Plateau getPlateau() {
+		return this.plateau;
+	}
+
 	public void setPlateau(Plateau plateau) {
 		this.plateau = plateau;
 	}
@@ -33,46 +36,22 @@ public abstract class Joueur {
 		return this.frappesTotales;
 	}
 
-	/**
-	 * 
-	 * @param frappesTotales
-	 */
-	public void setFrappesTotales(int frappesTotales) {
-		this.frappesTotales = frappesTotales;
-	}
+
 
 	public int getFrappesReussies() {
 		return this.frappesReussies;
 	}
 
-	/**
-	 * 
-	 * @param frappesReussies
-	 */
-	public void setFrappesReussies(int frappesReussies) {
-		this.frappesReussies = frappesReussies;
-	}
 
 	public int getBateauxCoules() {
 		return this.bateauxCoules;
 	}
 
-	/**
-	 * 
-	 * @param bateauxCoules
-	 */
-	public void setBateauxCoules(int bateauxCoules) {
-		this.bateauxCoules = bateauxCoules;
-	}
 
 	public Case getDerniereCaseFrappee() {
 		return this.derniereCaseFrappee;
 	}
 
-	/**
-	 * 
-	 * @param derniereCaseFrappee
-	 */
 	public void setDerniereCaseFrappee(Case derniereCaseFrappee) {
 		this.derniereCaseFrappee = derniereCaseFrappee;
 	}
@@ -81,55 +60,30 @@ public abstract class Joueur {
 		return this.reader;
 	}
 
-	public Plateau getPlateau() {
-		return this.plateau;
-	}
-
-	/**
-	 * 
-	 * @param reader
-	 */
 	public void setReader(BufferedReader reader) {
 		this.reader = reader;
 	}
 
 	public void incrementerFrapperTotales() {
-		// TODO - implement Joueur.incrementerFrapperTotales
-		throw new UnsupportedOperationException();
+		this.frappesTotales++;
 	}
 
 	public void incrementerFrapperReussies() {
-		// TODO - implement Joueur.incrementerFrapperReussies
-		throw new UnsupportedOperationException();
+		this.frappesReussies++;
 	}
 
 	public void incrementerBateauxCoules() {
-		// TODO - implement Joueur.incrementerBateauxCoules
-		throw new UnsupportedOperationException();
+		this.bateauxCoules++;
 	}
 
-	public String recapStatJoueur() {
-		// TODO - implement Joueur.recapStatJoueur
-		throw new UnsupportedOperationException();
+	public void recapStatJoueur() {
+		System.out.println("Nom: " + this.nom);
+        System.out.println("Frappes Totales: " + this.frappesTotales);
+        System.out.println("Frappes Réussies: " + this.frappesReussies);
+        System.out.println("Bateaux Coulés: " + this.bateauxCoules);
 	}
 
-	protected void placerBateaux() {
-		// TODO - implement Joueur.placerBateaux
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * 
-	 * @param Adversaire
-	 */
-	protected Case tirerSurAdversaire(Joueur Adversaire) {
-		// TODO - implement Joueur.tirerSurAdversaire
-		throw new UnsupportedOperationException();
-	}
-
-	protected void initialiserNom() {
-		// TODO - implement Joueur.initialiserNom
-		throw new UnsupportedOperationException();
-	}
-
+	public abstract void placerBateaux();
+	public abstract void tirerSur(Joueur adversaire);
+    public abstract void initialiserNom();
 }
