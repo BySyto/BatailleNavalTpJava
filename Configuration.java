@@ -9,7 +9,7 @@ public abstract class Configuration {
     };
 	private static int tailleGrille = 10;
 
-	public String[][] getBateaux() {
+	public static String[][] getBateaux() {
 		return bateaux;
 	}
 
