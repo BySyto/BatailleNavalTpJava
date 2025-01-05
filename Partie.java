@@ -20,15 +20,7 @@ public class Partie {
 	}
 
 	public void jouerPartie() {
-		while (!verifierPartieTerminee()) {
-			if (prochainAJouer==1) {
-				joueur1.jouerCoup(joueur2.getPlateau());
-				prochainAJouer = 2;
-			} else {
-				joueur2.jouerCoup(joueur1.getPlateau());
-				prochainAJouer = 1;
-			}
-		}
+		
 
 	}
 
